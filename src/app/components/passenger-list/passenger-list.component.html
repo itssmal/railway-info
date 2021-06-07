@@ -1,0 +1,37 @@
+<nb-card accent="primary">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Luggage compartment</th>
+            <th scope="col">Goods' weight</th>
+            <th scope="col">Ticket ID</th>
+            <th scope="col">Price</th>
+            <th scope="col">Purchase Method</th>
+            <th scope="col">Status</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let elem of passengers">
+            <td>{{ elem.id }}</td>
+            <td>{{ elem.fullName }}</td>
+            <td>{{ elem.phone }}</td>
+            <td>{{ elem.luggageCompartment}}</td>
+            <td>{{ elem.weightGoods}}</td>
+            <td>{{ elem.ticketId.id}}</td>
+            <td>{{ elem.ticketId.price}}</td>
+            <td>{{ elem.ticketId.purchaseMethod}}</td>
+            <td>{{ elem.ticketId.ticketStatus}}</td>
+            <td>
+                <a (click)="deleteElem(elem.id)" style="cursor: pointer">
+                    <nb-icon icon="trash-outline"></nb-icon>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</nb-card>
+

@@ -1,0 +1,33 @@
+<nb-card accent="primary">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Wagons</th>
+            <th scope="col">Condition</th>
+            <th scope="col">More</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let elem of locomotives">
+            <td>{{ elem.id }}</td>
+            <td>{{ elem.type }}</td>
+            <td>{{ elem.numberWagons }}</td>
+            <td>{{ elem.condition}}</td>
+            <td>
+                <a (click)="openElem(elem.id)" style="cursor: pointer">
+                    <nb-icon icon="more-horizontal-outline"></nb-icon>
+                </a>
+            </td>
+            <td>
+                <a style="cursor: pointer">
+                    <nb-icon icon="trash-outline"></nb-icon>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</nb-card>
+

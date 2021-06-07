@@ -1,0 +1,42 @@
+<nb-card>
+    <nb-card-header><h2 class="text-info">Login</h2></nb-card-header>
+    <nb-card-body>
+        <!-- FORM -->
+        <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="login(loginForm.value)">
+            <!-- email -->
+            <div class="form-group">
+                <label for="email" class="label">Email *</label>
+                <input
+                        nbInput
+                        type="email"
+                        formControlName="email"
+                        fullWidth
+                        id="email"
+                        placeholder="Email"
+                />
+            </div>
+
+            <!-- password -->
+            <div class="form-group">
+                <label for="password" class="label">Password *</label>
+                <input
+                        nbInput
+                        type="password"
+                        formControlName="password"
+                        fullWidth
+                        id="password"
+                        placeholder="Password"
+                />
+            </div>
+
+            <!-- button -->
+            <button
+                    type="submit" nbButton fullWidth hero status="primary" shape="round"
+                    [disabled]="!loginForm.valid"
+            >
+                Login
+            </button>
+        </form>
+
+    </nb-card-body>
+</nb-card>

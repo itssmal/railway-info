@@ -1,0 +1,12 @@
+<nb-card>
+    <nb-list>
+        <nb-list-item
+                *ngFor="let employee of employees"
+                class="employee-li"
+                (click)="openEmployee(employee.id)"
+        >
+            <nb-user [name]="employee.fullName" [title]="employee.town + ', ' +  employee.age"></nb-user>
+        </nb-list-item>
+    </nb-list>
+</nb-card>
+

@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  margin-top: 20px;
+}
+
+.ctrl-btn {
+  margin-left: 10px;
+}
+
+.form-control-div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 30%;
+  margin-left: 20px;
+  animation-name: card-animation;
+  animation-duration: 500ms;
+}
+
+@keyframes card-animation {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,28 @@
+<div *ngIf="!isLoading">
+    <button nbButton status="primary" shape="round" size="small" (click)="this.location.back()">
+        Back
+    </button>
+
+    <nb-card class="employee-card" accent="primary">
+        <h1 class="text-primary">{{employee.fullName}}</h1>
+        <p>ID: {{employee.id}}</p>
+        <p>Gender: {{employee.gender}}</p>
+        <p>Age: {{employee.age}}</p>
+        <p>Town: {{employee.town}}</p>
+        <p>Children: {{employee.childrenNumber}}</p>
+        <p>Salary: {{employee.salary}}</p>
+        <p>Skills: {{employee.skills}}</p>
+        <h5>Category</h5>
+        <p>ID: {{employee.categoryId.id}}</p>
+        <p>Name: {{employee.categoryId.name}}</p>
+        <p>Function: {{employee.categoryId.function}}</p>
+        <h5>Brigade</h5>
+        <p>Type: {{employee.brigadeId.type}}</p>
+        <h6>Department: {{employee.brigadeId.departmentId.region}}</h6>
+    </nb-card>
+
+</div>
+
+<app-loading *ngIf="isLoading"></app-loading>
+
+

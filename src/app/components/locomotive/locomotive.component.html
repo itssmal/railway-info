@@ -1,0 +1,44 @@
+<div *ngIf="!isLoading">
+    <button nbButton status="primary" shape="round" size="small" (click)="this.location.back()">
+        Back
+    </button>
+
+    <nb-card class="locomotive-card" accent="primary">
+        <h1 class="text-primary">Locomotive №{{locomotive.id}}</h1>
+        <p>ID: {{locomotive.id}}</p>
+        <p>Condition: {{locomotive.condition}}</p>
+        <p>Wagons: {{locomotive.numberWagons}}</p>
+        <p>Type: {{locomotive.type}}</p>
+        <h4>Preparation Info</h4>
+        <p *ngIf="!!!locomotive.prepare">No Info</p>
+        <div *ngIf="!!locomotive.prepare">
+            <p>ID: {{locomotive.prepare.id}}</p>
+            <p>Service: {{locomotive.prepare.service}}</p>
+            <p>Technical: {{locomotive.prepare.technical}}</p>
+        </div>
+        <h4>Repair Info</h4>
+        <p *ngIf="!!!locomotive.prepare">No Info</p>
+        <div *ngIf="!!locomotive.repair">
+            <p>ID: {{locomotive.repair.id}}</p>
+            <p>Kind: {{locomotive.repair.kind}}</p>
+        </div>
+<!--        <p>Gender: {{locomotive.gender}}</p>-->
+<!--        <p>Age: {{locomotive.age}}</p>-->
+<!--        <p>Town: {{locomotive.town}}</p>-->
+<!--        <p>Children: {{locomotive.childrenNumber}}</p>-->
+<!--        <p>Salary: {{locomotive.salary}}</p>-->
+<!--        <p>Skills: {{locomotive.skills}}</p>-->
+<!--        <h5>Category</h5>-->
+<!--        <p>ID: {{locomotive.categoryId.id}}</p>-->
+<!--        <p>Name: {{locomotive.categoryId.name}}</p>-->
+<!--        <p>Function: {{locomotive.categoryId.function}}</p>-->
+<!--        <h5>Brigade</h5>-->
+<!--        <p>Type: {{locomotive.brigadeId.type}}</p>-->
+<!--        <h6>Department: {{locomotive.brigadeId.departmentId.region}}</h6>-->
+    </nb-card>
+
+</div>
+
+<app-loading *ngIf="isLoading"></app-loading>
+
+

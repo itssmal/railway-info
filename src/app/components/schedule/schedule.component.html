@@ -1,0 +1,142 @@
+<button nbButton status="primary" (click)="addItem()" class="ctrl-btn">
+    <nb-icon icon="plus-circle-outline"></nb-icon>
+    <span>Add</span>
+</button>
+
+<div class="wrapper">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Departure City</th>
+            <th scope="col">Arrival City</th>
+            <th scope="col">Departure Date</th>
+            <th scope="col">Arrival Date</th>
+            <th scope="col">More</th>
+            <th scope="col" *ngIf="delMode">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let elem of data; let i = index">
+            <td>{{ elem.id }}</td>
+            <td>{{ elem.locomotiveId.type }}</td>
+            <td>{{ elem.routeId.initialDestination }}</td>
+            <td>{{ elem.routeId.finalDestination}}</td>
+            <td>{{ elem.departureDate | date}}</td>
+            <td>{{ elem.arrivalDate | date}}</td>
+            <td>
+                <a (click)="openElem(i)" style="cursor: pointer">
+                    <nb-icon icon="more-horizontal-outline"></nb-icon>
+                </a>
+            </td>
+            <td *ngIf="delMode">
+                <a (click)="deleteElem(i)" style="cursor: pointer">
+                    <nb-icon icon="trash-outline"></nb-icon>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nb-card accent="primary" class="card" *ngIf="elementToShow !== null">
+        <nb-card-header>{{elementToShow.id+ ' ' + elementToShow.routeId.initialDestination + '-' + elementToShow.routeId.finalDestination}}</nb-card-header>
+        <nb-card-body>
+            <h5>Locomotive Info:</h5>
+            <p>Type: {{elementToShow.locomotiveId.type}}</p>
+            <p>Wagons quantity: {{elementToShow.locomotiveId.numberWagons}}</p>
+            <p>Condition: {{elementToShow.locomotiveId.condition}}</p>
+            <h5>Route Info:</h5>
+            <p>Main Stations: {{elementToShow.routeId.mainStations}}</p>
+            <p>Race: {{elementToShow.routeId.race}}</p>
+            <div class="button-group">
+                <button nbButton status="primary" size="small" (click)="editElem(elementToShow)">Add</button>
+                <button nbButton status="info" size="small" (click)="goToPassengers(elementToShow.id)">View passengers</button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>
+
+
+<ng-template #templateRef>
+    <nb-card>
+        <nb-card-body class="example-items-col">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-control-div">
+                    <label for="arrivalDay" class="text-primary">Arrival Day</label>
+                    <input
+                            nbInput
+                            status="primary"
+                            fullWidth
+                            type="text"
+                            id="arrivalDay"
+                            formControlName="arrivalDay"
+                    >
+                    <span
+                            *ngIf="form.get('arrivalDay').touched && form.get('arrivalDay').invalid"
+                            class="text-danger"
+                    >
+                        Поле не може бути пустим
+                    </span>
+                </div>
+
+                <div class="form-control-div">
+                    <label for="arrivalDay" class="text-primary">Arrival Date</label>
+                    <input
+                            nbInput
+                            status="primary"
+                            fullWidth
+                            type="date"
+                            id="arrivalDate"
+                            formControlName="arrivalDate"
+                    >
+                    <span
+                            *ngIf="form.get('arrivalDate').touched && form.get('arrivalDate').invalid"
+                            class="text-danger"
+                    >
+                        Поле не може бути пустим
+                    </span>
+                </div>
+
+                <div class="form-control-div">
+                    <label for="departureDay" class="text-primary">Departure Day</label>
+                    <input
+                            nbInput
+                            status="primary"
+                            fullWidth
+                            type="text"
+                            id="departureDay"
+                            formControlName="departureDay"
+                    >
+                    <span
+                            *ngIf="form.get('departureDay').touched && form.get('departureDay').invalid"
+                            class="text-danger"
+                    >
+                        Поле не може бути пустим
+                    </span>
+                </div>
+
+                <div class="form-control-div">
+                    <label for="departureDate" class="text-primary">Departure Date</label>
+                    <input
+                            nbInput
+                            status="primary"
+                            fullWidth
+                            type="date"
+                            id="departureDate"
+                            formControlName="departureDate"
+                    >
+                    <span
+                            *ngIf="form.get('departureDate').touched && form.get('departureDate').invalid"
+                            class="text-danger"
+                    >
+                        Поле не може бути пустим
+                    </span>
+                </div>
+            </form>
+            <div class="button-group">
+                <button nbButton status="danger">Cancel</button>
+                <button nbButton status="success" [disabled]="form.invalid" (click)="dialog.close('submit')">Save</button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</ng-template>

@@ -1,0 +1,8 @@
+.employee-li {
+  cursor: pointer;
+  transition: 200ms;
+  &:hover {
+    background-color: #b0ceff;
+    transition: 100ms ease-in-out;
+  }
+}
